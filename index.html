@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abubakar | Creative Developer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            Abubakar.
+        </div>
+        <!-- Horizontal text links for the home page -->
+        <div class="nav-links">
+            <a href="#home" class="hover-target">Home</a>
+            <a href="#about" class="hover-target">About</a>
+            <a href="#skills" class="hover-target">Skills</a>
+            <a href="#work" class="hover-target">Work</a>
+            <a href="#contact" class="hover-target">Contact</a>
+        </div>
+        <div class="menu-btn">
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+        </div>
+    </nav>
+
+    <!-- Overlay Navigation (Side Drawer) -->
+    
+    <!-- Separate Red Close Button -->
+    <button class="menu-close-btn hover-target">
+        <div class="close-line"></div>
+        <div class="close-line"></div>
+    </button>
+    
+    <div class="menu-overlay">
+        <div class="menu-inner">
+            <ul class="menu-links">
+                <li>
+                    <span class="menu-number">01</span>
+                    <a href="#home" class="menu-link hover-target">HOME</a>
+                </li>
+                <li>
+                    <span class="menu-number">02</span>
+                    <a href="#about" class="menu-link hover-target">ABOUT</a>
+                </li>
+                <li>
+                    <span class="menu-number">03</span>
+                    <a href="#skills" class="menu-link hover-target">SKILLS</a>
+                </li>
+                <li>
+                    <span class="menu-number">04</span>
+                    <a href="#work" class="menu-link hover-target">PROJECTS</a>
+                </li>
+                <li>
+                    <span class="menu-number">05</span>
+                    <a href="#contact" class="menu-link hover-target">CONTACT</a>
+                </li>
+            </ul>
+            <div class="menu-socials">
+                <a href="#" class="social-icon hover-target">Wa</a>
+                <a href="#" class="social-icon hover-target">Em</a>
+                <a href="#" class="social-icon hover-target">In</a>
+                <a href="#" class="social-icon hover-target">Bē</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="smooth-scroll-wrapper">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <!-- Spider-Man 3D Parallax Background -->
+            <div class="hero-bg-image">
+                <img src="spiderman.jfif" alt="Spider-Man" class="spiderman-img">
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: clamp(3rem, 6vw, 5rem); line-height: 0.9;">
+                    <span class="hero-line"><span class="hero-word">WITH GREAT</span></span>
+                    <span class="hero-line"><span class="hero-word outline-text">POWER.</span></span>
+                    <span class="hero-line"><span class="hero-word">COMES GREAT</span></span>
+                    <span class="hero-line"><span class="hero-word"
+                            style="color: var(--accent)">RESPONSIBILITY.</span></span>
+                </h1>
+                <p class="hero-subtitle" style="font-weight: 500; letter-spacing: 2px; margin-top: 3rem;">&mdash; Uncle
+                    Ben</p>
+            </div>
+
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
+            <!-- Background element -->
+            <div class="hero-bg-glow"></div>
+        </section>
+
+        <!-- About / Manifesto Section (Scrollytelling text reveal) -->
+        <section class="about" id="about">
+            <div class="container">
+                <p class="manifesto-text">
+                    I believe <span class="highlight">great software</span> is more than just code — it's <span class="highlight">experience</span>. Every pixel, interaction, transition, and system should feel <span class="highlight">intentional</span>, <span class="highlight">fast</span>, and <span class="highlight">meaningful</span>.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Me sticky wrapper — keeps it on top of skills while in view -->
+        <div class="about-me-wrapper">
+        <!-- About Me Section -->
+        <section class="about-me" id="about-me">
+            <div class="torn-top"></div>
+            <div class="container" style="text-align: center; max-width: 800px; margin: 0 auto; padding-bottom: 4rem; padding-top: 4rem;">
+                <h2 class="about-heading">About Me</h2>
+                <h3 class="about-subheading">
+                    Hi, I'm Abubakar &mdash; a developer focused on building modern, scalable software applications.
+                </h3>
+                <p class="about-text">
+                    I work across different layers of development, from building intuitive user interfaces to designing backend systems, APIs, and application logic. I focus on clean architecture, performance, and writing well-structured, maintainable code.
+                </p>
+                <p class="about-text">
+                    I also care about software quality, including testing, debugging, and ensuring reliability across applications. I believe good software is not just about features, but also about stability and long-term maintainability.
+                </p>
+                <p class="about-text">
+                    Beyond development, I enjoy thinking in terms of complete systems — from user experience to backend architecture and deployment — and turning ideas into practical, production-ready software.
+                </p>
+            </div>
+            <div class="torn-bottom"></div>
+        </section>
+        </div><!-- end .about-me-wrapper -->
+
+        <!-- Skills + Projects sticky wrapper -->
+        <div class="skills-projects-wrapper">
+
+        <!-- Skills Section (Modern Awwwards-style) -->
+        <section class="skills-section" id="skills">
+            <div class="skills-container">
+                <div class="skills-header">
+                    <span class="section-kicker">My Skills</span>
+                    <p>
+                        A structured toolkit I use to design, build, and ship scalable software systems across web, mobile, and AI-driven products.
+                    </p>
+                </div>
+
+                <!-- Marquee ticker -->
+                <div class="skills-marquee" aria-hidden="true">
+                    <div class="skills-marquee-track">
+                        <span>React.js</span><span class="sep">✦</span>
+                        <span>Node.js</span><span class="sep">✦</span>
+                        <span>LLM Integration</span><span class="sep">✦</span>
+                        <span>Next.js</span><span class="sep">✦</span>
+                        <span>MongoDB</span><span class="sep">✦</span>
+                        <span>Multi-Agent Systems</span><span class="sep">✦</span>
+                        <span>Docker</span><span class="sep">✦</span>
+                        <span>Tailwind CSS</span><span class="sep">✦</span>
+                        <span>CapacitorJS</span><span class="sep">✦</span>
+                        <span>System Design</span><span class="sep">✦</span>
+                        <span>React.js</span><span class="sep">✦</span>
+                        <span>Node.js</span><span class="sep">✦</span>
+                        <span>LLM Integration</span><span class="sep">✦</span>
+                        <span>Next.js</span><span class="sep">✦</span>
+                        <span>MongoDB</span><span class="sep">✦</span>
+                        <span>Multi-Agent Systems</span><span class="sep">✦</span>
+                        <span>Docker</span><span class="sep">✦</span>
+                        <span>Tailwind CSS</span><span class="sep">✦</span>
+                        <span>CapacitorJS</span><span class="sep">✦</span>
+                        <span>System Design</span><span class="sep">✦</span>
+                    </div>
+                </div>
+
+                <!-- Skill category grid -->
+                <div class="skills-grid">
+
+                    <div class="skill-category hover-target">
+                        <div class="skill-category-header">
+                            <span class="skill-cat-num">01</span>
+                            <h3>Computing Foundations</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span>C++</span>
+                            <span>JavaScript (ES6+)</span>
+                            <span>SQL</span>
+                            <span>OOP</span>
+                            <span>DSA</span>
+                            <span>System Design</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category hover-target">
+                        <div class="skill-category-header">
+                            <span class="skill-cat-num">02</span>
+                            <h3>Frontend</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span>React.js</span>
+                            <span>Next.js</span>
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>Tailwind CSS</span>
+                            <span>Redux</span>
+                            <span>GSAP Animations</span>
+                            <span>Responsive UI Design</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category hover-target">
+                        <div class="skill-category-header">
+                            <span class="skill-cat-num">03</span>
+                            <h3>Backend & APIs</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span>Node.js</span>
+                            <span>Express.js</span>
+                            <span>REST APIs</span>
+                            <span>JWT Authentication</span>
+                            <span>Role-Based Access Control</span>
+                            <span>Modular Architecture</span>
+                            <span>Secure API Design</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category hover-target">
+                        <div class="skill-category-header">
+                            <span class="skill-cat-num">04</span>
+                            <h3>AI & Intelligent Systems</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span>LLM Integration</span>
+                            <span>Google APIs</span>
+                            <span>Multi-Agent Systems</span>
+                            <span>Event-Driven Architecture</span>
+                            <span>Explainable AI (XAI)</span>
+                            <span>Workflow Orchestration</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category hover-target">
+                        <div class="skill-category-header">
+                            <span class="skill-cat-num">05</span>
+                            <h3>Data, DevOps & Tools</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span>MongoDB</span>
+                            <span>MySQL</span>
+                            <span>Git & GitHub</span>
+                            <span>Docker</span>
+                            <span>Postman</span>
+                            <span>Linux (Ubuntu)</span>
+                            <span>CI/CD Pipelines</span>
+                            <span>Vite</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category hover-target">
+                        <div class="skill-category-header">
+                            <span class="skill-cat-num">06</span>
+                            <h3>Cross-Platform Systems</h3>
+                        </div>
+                        <div class="skill-tags">
+                            <span>CapacitorJS</span>
+                            <span>Web + Mobile Deployment</span>
+                            <span>Cross-Platform App Development</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Work Section (Pinned Scroll Reveal) -->
+        <section class="projects-wrapper" id="work">
+            <div class="projects-stage">
+                <div class="work-index" aria-label="Selected work index">
+                    <span class="work-index-number active">1</span>
+                    <span class="work-index-number">2</span>
+                    <span class="work-index-number">3</span>
+                    <span class="work-index-number">4</span>
+                    <span class="work-index-number">5</span>
+                    <span class="work-index-line"></span>
+                </div>
+
+                <div class="work-display">
+                    <div class="work-section-title">My projects:</div>
+
+                    <!-- Project cards replace images -->
+                    <div class="work-media">
+                        <div class="work-image active">
+                            <div class="work-card-bg">
+                                <span class="work-card-num">01</span>
+                                <div class="work-card-lines">
+                                    <span></span><span></span><span></span>
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="work-card-tag">AI · Multi-Agent · Mobile</div>
+                            </div>
+                        </div>
+                        <div class="work-image">
+                            <div class="work-card-bg">
+                                <span class="work-card-num">02</span>
+                                <div class="work-card-lines">
+                                    <span></span><span></span><span></span>
+                                    <span></span><span></span>
+                                </div>
+                                <div class="work-card-tag">API · Real-time · Frontend</div>
+                            </div>
+                        </div>
+                        <div class="work-image">
+                            <div class="work-card-bg">
+                                <span class="work-card-num">03</span>
+                                <div class="work-card-lines">
+                                    <span></span><span></span><span></span>
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="work-card-tag">SaaS · Auth · Full-stack</div>
+                            </div>
+                        </div>
+                        <div class="work-image">
+                            <div class="work-card-bg">
+                                <span class="work-card-num">04</span>
+                                <div class="work-card-lines">
+                                    <span></span><span></span><span></span>
+                                    <span></span><span></span>
+                                </div>
+                                <div class="work-card-tag">Marketplace · Roles · Voice</div>
+                            </div>
+                        </div>
+                        <div class="work-image">
+                            <div class="work-card-bg">
+                                <span class="work-card-num">05</span>
+                                <div class="work-card-lines">
+                                    <span></span><span></span><span></span>
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="work-card-tag">CMS · Access Control · REST</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-copy">
+                        <article class="work-story active">
+                            <span class="work-kicker">Agentic service orchestrator</span>
+                            <h2>ServiceLink AI</h2>
+                            <p>AI-powered service marketplace simulation using event-driven multi-agent workflows across web and mobile.</p>
+                        </article>
+                        <article class="work-story">
+                            <span class="work-kicker">Real-time API app</span>
+                            <h2>Weather App</h2>
+                            <p>Weather application with API integration, location search, city comparison, forecasts, and dynamic weather UI.</p>
+                        </article>
+                        <article class="work-story">
+                            <span class="work-kicker">SaaS productivity platform</span>
+                            <h2>Task Management</h2>
+                            <p>Full-stack task system with authentication, role-based access, drag-and-drop workflows, and modular REST APIs.</p>
+                        </article>
+                        <article class="work-story">
+                            <span class="work-kicker">Micro-service marketplace</span>
+                            <h2>Skill Swap</h2>
+                            <p>Two-sided skill marketplace with user/admin roles, moderation, voice search, automated avatars, and REST APIs.</p>
+                        </article>
+                        <article class="work-story">
+                            <span class="work-kicker">Content management platform</span>
+                            <h2>Digital Art Sharing</h2>
+                            <p>Role-based art platform for artists, buyers, and admins with secure access, moderation, upload, and browsing APIs.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="work-details">
+                    <div class="work-services">
+                        <ul class="work-service-list active">
+                            <li>React</li>
+                            <li>Node.js</li>
+                            <li>CapacitorJS</li>
+                            <li>Gemini API</li>
+                        </ul>
+                        <ul class="work-service-list">
+                            <li>Weather API</li>
+                            <li>Search</li>
+                            <li>Forecasts</li>
+                            <li>Dynamic UI</li>
+                        </ul>
+                        <ul class="work-service-list">
+                            <li>React</li>
+                            <li>Express</li>
+                            <li>MongoDB</li>
+                            <li>JWT</li>
+                            <li>Docker</li>
+                        </ul>
+                        <ul class="work-service-list">
+                            <li>Node.js</li>
+                            <li>MongoDB</li>
+                            <li>Admin Roles</li>
+                            <li>DiceBear API</li>
+                            <li>Voice Search</li>
+                        </ul>
+                        <ul class="work-service-list">
+                            <li>Role-based Access</li>
+                            <li>REST APIs</li>
+                            <li>Moderation</li>
+                            <li>Content Uploads</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="work-progress" aria-hidden="true">
+                    <span></span>
+                </div>
+
+                <!-- More Projects link — appears on last project -->
+                <a
+                    href="https://github.com/mabubakarali"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="more-projects-btn hover-target"
+                    aria-label="View more projects on GitHub"
+                >
+                    <span class="more-projects-text">More Projects</span>
+                    <span class="more-projects-arrow">↗</span>
+                </a>
+            </div>
+
+            <div class="work-scroll-slides" aria-hidden="true">
+                <div class="work-scroll-step"></div>
+                <div class="work-scroll-step"></div>
+                <div class="work-scroll-step"></div>
+                <div class="work-scroll-step"></div>
+                <div class="work-scroll-step"></div>
+            </div>
+        </section>
+
+        </div><!-- end .skills-projects-wrapper -->
+
+        <!-- parallax images section -->
+        <section class="parallax-section">
+            <div class="parallax-container">
+                <div class="parallax-img p1" data-speed="0.8">
+                    <img src="gif1.gif"
+                        alt="GIF 1">
+                </div>
+                <div class="parallax-img p2" data-speed="1.2">
+                    <img src="https://i.makeagif.com/media/2-05-2024/Q9fyVV.gif"
+                        alt="Rajpal Yadav comedy scene">
+                </div>
+                <div class="parallax-text">
+                    <h2 class="outline-text">Let's create</h2>
+                    <h2 class="filled-text">Something</h2>
+                    <h2 class="outline-text" style="font-style: italic">Amazing.</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer / Contact -->
+        <footer class="footer" id="contact">
+            <div class="footer-content">
+                <h2 class="footer-title">Ready to talk?</h2>
+                <a href="https://mail.google.com/mail/?view=cm&to=maali5517@gmail.com" target="_blank" rel="noopener noreferrer" class="magnetic-btn hover-target">
+                    <span class="btn-text">Send Message</span>
+                    <div class="btn-bg"></div>
+                </a>
+                <div class="footer-links">
+                    <a href="https://mail.google.com/mail/?view=cm&to=maali5517@gmail.com" target="_blank" rel="noopener noreferrer" class="hover-target">Gmail</a>
+                    <a href="https://github.com/mabubakarali" target="_blank" rel="noopener noreferrer" class="hover-target">GitHub</a>
+                    <a href="https://www.linkedin.com/in/muhammad-abubakar-ali-563441373" target="_blank" rel="noopener noreferrer" class="hover-target">LinkedIn</a>
+                </div>
+                <p class="copyright">&copy; 2026 Abubakar. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- GSAP & Lenis -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- SVG Filter for Torn Paper Effect -->
+    <svg width="0" height="0" class="svg-filters" style="display:none;">
+        <filter id="torn-edge" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.05 0.5" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
+
+    <!-- Local JS -->
+    <script src="main.js"></script>
+</body>
+
+</html>
+
