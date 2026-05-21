@@ -1530,102 +1530,323 @@ body {
     margin-top: 4rem;
 }
 
-/* Responsive */
+/* Mobile projects list — hidden on desktop, shown on mobile */
+.mobile-projects-list { display: none; }
+
+/* ============================================================
+   RESPONSIVE SYSTEM
+   Desktop:  > 1024px  — full cinematic experience
+   Tablet:   768–1024px — simplified, still elegant
+   Mobile:   < 768px   — clean, fast, touch-friendly
+   ============================================================ */
+
+/* ── TABLET (1024px and below) ── */
+@media (max-width: 1024px) {
+
+    /* Nav */
+    .navbar { padding: 1.8rem 5vw; }
+    .nav-links { gap: 2rem; }
+    .nav-links a { font-size: 1rem; }
+
+    /* Hero */
+    .hero-title { font-size: clamp(3rem, 8vw, 6rem); }
+
+    /* About manifesto */
+    .about { padding: 0 3rem; }
+
+    /* Skills */
+    .skills-section { padding: 6vh 0 5vh; }
+    .skills-header {
+        width: calc(100% - 6rem);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 2.5vh;
+    }
+    .skills-header p { text-align: left; max-width: 100%; }
+    .skills-grid { width: calc(100% - 6rem); grid-template-columns: repeat(2, 1fr); }
+
+    /* Projects */
+    .projects-stage {
+        grid-template-columns: minmax(80px, 0.5fr) minmax(0, 4fr) minmax(160px, 0.8fr);
+        gap: clamp(1rem, 2vw, 2rem);
+        padding: clamp(4rem, 7vh, 6rem) clamp(1.5rem, 3vw, 3rem) clamp(2rem, 5vh, 4rem);
+    }
+    .work-story h2 { font-size: clamp(2.5rem, 5vw, 5rem); }
+    .work-media { height: clamp(320px, 52vh, 520px); }
+
+    /* Parallax */
+    .parallax-img.p1 { width: 28vw; height: 24vh; }
+    .parallax-img.p2 { width: 34vw; height: 32vh; }
+
+    /* Footer */
+    .footer-title { font-size: clamp(4rem, 10vw, 8rem); }
+}
+
+/* ── MOBILE (768px and below) ── */
 @media (max-width: 768px) {
-    .navbar { padding: 1.5rem 2rem; }
-    .about { padding: 0 2rem; }
-    .parallax-img.p1 { width: 70vw; height: 30vh; top: 5%; }
-    .parallax-img.p2 { width: 60vw; height: 25vh; bottom: 5%; left: 10%; right: auto; }
+
+    /* ── Global overflow guard ── */
+    body, .smooth-scroll-wrapper {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+        padding: 1.4rem 1.5rem;
+        mix-blend-mode: normal; /* prevent blend issues on mobile */
+    }
     .nav-links { display: none; }
-    .skills-section { padding-top: 12vh; }
+    .menu-btn {
+        position: fixed;
+        right: 1.5rem;
+        top: 1.2rem;
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+    }
+
+    /* ── Hero ── */
+    .hero-content {
+        width: 100%;
+        padding: 0 1.5rem;
+        overflow: hidden;
+    }
+    .hero-title {
+        font-size: clamp(2rem, 10vw, 3.8rem);
+        line-height: 1.05;
+        word-break: break-word;
+    }
+    .hero-subtitle { font-size: 0.9rem; margin-top: 1.2rem; }
+    .spiderman-img { width: 100%; height: 100%; }
+
+    /* ── Manifesto ── */
+    .about { padding: 0 1.5rem; }
+    .manifesto-text { font-size: clamp(1.5rem, 6vw, 2.8rem); }
+
+    /* ── About Me ── */
+    .about-me { padding: 2rem 1.5rem; }
+    .about-me-wrapper { position: relative; }
+    .about-me { position: relative; top: auto; }
+    .about-heading { font-size: clamp(2.2rem, 11vw, 4.5rem); }
+    .about-subheading { font-size: 1.1rem; }
+    .about-text { font-size: 0.95rem; line-height: 1.7; }
+
+    /* ── Skills ── */
+    .skills-projects-wrapper { position: relative; }
+    .skills-section {
+        position: relative;
+        top: auto;
+        min-height: auto;
+        padding: 4vh 0 4vh;
+    }
     .skills-header {
         width: calc(100% - 3rem);
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-bottom: 3rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        margin-bottom: 2vh;
     }
-    .section-kicker,
-    .skills-header h2,
-    .skills-header p,
-    .skills-stats {
-        grid-column: 1;
-        grid-row: auto;
-    }
-    .skills-stats { grid-template-columns: 1fr; }
+    .section-kicker { font-size: clamp(1.2rem, 6vw, 2rem); }
+    .skills-header p { font-size: 0.88rem; text-align: left; }
+    .skills-marquee { margin-bottom: 2vh; }
     .skills-grid {
-        width: calc(100% - 2rem);
+        width: calc(100% - 3rem);
         grid-template-columns: 1fr;
+        gap: 1px;
     }
-    .skill-card-wrapper { padding: 0 1rem; }
-    .skill-card-wrapper:first-of-type { padding-top: 10vh; }
-    .skill-card {
-        min-height: 560px;
-        height: auto;
-        justify-content: flex-end;
+    .skill-category { padding: 1.3rem 1.2rem; }
+    .skill-category h3 { font-size: 0.9rem; }
+    .skill-tags span { font-size: 0.72rem; padding: 0.28rem 0.65rem; }
+
+    /* ── Projects — hide desktop, show mobile list ── */
+    .projects-wrapper {
+        min-height: auto;
+        overflow: visible;
+        box-shadow: none;
     }
-    .skill-title { font-size: clamp(2.35rem, 13vw, 4rem); }
-    .skill-desc { font-size: 1rem; }
-    .skill-tools span { font-size: 0.72rem; }
-    .projects-wrapper { min-height: 310vh; }
-    .projects-stage {
-        grid-template-columns: 1fr;
-        align-content: center;
-        gap: 1.2rem;
-        padding: 5rem 1rem 4rem;
+    .projects-stage { display: none; }
+    .work-scroll-slides { display: none; }
+
+    .mobile-projects-list {
+        display: block;
+        width: 100%;
+        padding-bottom: 1rem;
     }
-    .work-index {
+    .mobile-projects-list .work-section-title {
+        position: relative;
+        top: auto; left: auto;
+        display: block;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+    }
+    .mobile-project-item {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        overflow: hidden;
+    }
+    .mobile-project-card-bg {
+        position: relative;
+        width: 100%;
+        height: 160px;
+        background:
+            linear-gradient(135deg, rgba(217,20,56,0.1) 0%, transparent 55%),
+            repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(255,255,255,0.03) 29px, rgba(255,255,255,0.03) 30px),
+            repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(255,255,255,0.03) 29px, rgba(255,255,255,0.03) 30px);
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 1rem 1.2rem;
+        overflow: hidden;
+    }
+    .mobile-project-card-bg .work-card-tag {
+        font-family: var(--font-heading);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        position: relative;
+        z-index: 2;
+    }
+    .mobile-project-card-bg .work-card-num {
+        font-family: var(--font-heading);
+        font-size: 5rem;
+        font-weight: 800;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+        line-height: 1;
         position: absolute;
-        top: 5rem;
-        left: 1rem;
-        flex-direction: row;
+        bottom: -0.5rem;
+        right: 0.8rem;
+        pointer-events: none;
+    }
+    .mobile-project-info {
+        padding: 1.2rem 1.5rem 1.8rem;
+    }
+    .mobile-project-info .work-kicker {
+        display: block;
+        color: var(--accent);
+        font-family: var(--font-heading);
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-bottom: 0.4rem;
+    }
+    .mobile-project-info h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(1.6rem, 7vw, 2.4rem);
+        font-weight: 800;
+        line-height: 1.05;
+        color: var(--text-color);
+        text-transform: uppercase;
+        margin-bottom: 0.6rem;
+    }
+    .mobile-project-info p {
+        font-size: 0.88rem;
+        color: rgba(255,255,255,0.6);
+        line-height: 1.6;
+        margin-bottom: 0.9rem;
+    }
+    .mobile-project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+    .mobile-project-tags span {
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 0.25rem 0.65rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.04);
+        color: rgba(255,255,255,0.65);
+        border-radius: 2px;
+    }
+
+    /* ── More Projects button — compact on mobile ── */
+    .mobile-projects-list .more-projects-btn {
+        font-size: 0.75rem;
+        padding: 0.6rem 1.2rem;
+        letter-spacing: 0.08em;
+        margin: 1.5rem auto 2.5rem;
+        border-radius: 50px;
+    }
+
+    /* ── Hide scroll indicator mouse on mobile ── */
+    .scroll-indicator { display: none; }
+
+    /* ── Menu overlay — full screen, smaller text ── */
+    .menu-overlay {
+        width: 100vw;
+        align-items: flex-start;
+        padding: 0 2rem;
+    }
+    .menu-inner {
+        width: 100%;
+        opacity: 0;
+        gap: 8vh;
+    }
+    .menu-link {
+        font-size: clamp(1.4rem, 7vw, 2rem);
+        color: var(--text-color);
+        white-space: nowrap;
+    }
+    .menu-close-btn {
+        right: 1.5rem;
+        top: 1.5rem;
+    }
+    .menu-number { font-size: 0.8rem; }
+    .menu-links { gap: 1.4rem; }
+    .menu-links li { gap: 1rem; }
+
+    /* ── Parallax / "Let's create" — give it breathing room and a separator ── */
+    .parallax-section {
+        height: auto;
+        padding: 5rem 0 4rem;
+        border-top: 1px solid rgba(255,255,255,0.07);
+        background: var(--bg-color);
+    }
+    .parallax-container {
+        position: relative;
+        height: auto;
         align-items: center;
-        gap: 0.6rem;
-        font-size: 0.78rem;
-        z-index: 8;
+        justify-content: center;
+        padding: 0 1.5rem;
     }
-    .work-index-line { width: 34px; }
-    .work-display {
-        min-height: 0;
-        align-items: start;
+    .parallax-text {
+        position: relative;
+        padding: 0;
+        z-index: 1;
+        text-align: center;
     }
-    .work-section-title {
-        top: -2rem;
-        left: 0;
-        font-size: 0.9rem;
+    .parallax-text h2 {
+        font-size: clamp(2.2rem, 10vw, 4rem);
+        line-height: 1.05;
     }
-    .work-media {
-        width: 100%;
-        height: min(54vh, 460px);
-        align-self: start;
-    }
-    .work-copy {
-        left: 0;
-        top: auto;
-        bottom: -8.5rem;
-        width: 100%;
-        min-height: 220px;
-        transform: none;
-    }
-    .work-story h2 {
-        font-size: clamp(2.45rem, 12vw, 4.6rem);
-        max-width: 9ch;
-    }
-    .work-story p {
-        font-size: 0.92rem;
-        max-width: 95%;
-        margin-top: 1rem;
-    }
-    .work-details {
-        align-self: end;
-        margin-top: 9rem;
-    }
-    .work-services {
-        min-height: 96px;
-    }
-    .work-service-list {
-        justify-content: flex-start;
-    }
-    .work-service-list li {
-        font-size: 1rem;
-    }
+
+    /* ── Hide GIFs on mobile ── */
+    .parallax-img { display: none; }
+
+    /* ── Footer ── */
+    .footer { height: auto; min-height: auto; padding: 4rem 1.5rem 3rem; }
+    .footer-content { gap: 1.8rem; }
+    .footer-title { font-size: clamp(2.8rem, 13vw, 5.5rem); }
+    .magnetic-btn { padding: 1.1rem 2.2rem; font-size: 0.88rem; }
+    .footer-links { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+    .footer-links a { font-size: 0.82rem; }
+    .copyright { margin-top: 1.5rem; font-size: 0.78rem; }
+}
+
+/* ── SMALL MOBILE (480px and below) ── */
+@media (max-width: 480px) {
+    .hero-title { font-size: clamp(2rem, 12vw, 3.5rem); }
+    .manifesto-text { font-size: clamp(1.4rem, 7vw, 2.5rem); }
+    .about-heading { font-size: clamp(2rem, 13vw, 4rem); }
+    .footer-title { font-size: clamp(2.5rem, 15vw, 5rem); }
+    .section-kicker { font-size: clamp(1rem, 7vw, 1.8rem); }
+    .skill-category { padding: 1.2rem; }
+    .parallax-text h2 { font-size: clamp(1.8rem, 11vw, 3rem); }
+    .mobile-project-info h2 { font-size: clamp(1.4rem, 8vw, 2rem); }
+    .menu-link { font-size: clamp(1.2rem, 7vw, 1.7rem); }
 }

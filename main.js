@@ -305,6 +305,8 @@ const workIndexNumbers = document.querySelectorAll('.work-index-number');
 const workProgress = document.querySelector('.work-progress span');
 const moreProjectsBtn = document.querySelector('.more-projects-btn');
 
+const isMobile = () => window.innerWidth <= 768;
+
 let activeWorkIndex = 0;
 
 const setActiveWork = (index) => {
@@ -318,71 +320,82 @@ const setActiveWork = (index) => {
     });
 
     // Show "More Projects" button only on the last project
-    if (moreProjectsBtn) {
+    if (moreProjectsBtn && !isMobile()) {
         const isLast = index === workImages.length - 1;
         moreProjectsBtn.classList.toggle('visible', isLast);
     }
 };
 
 if (projectsWrap && workImages.length) {
-    ScrollTrigger.create({
-        trigger: projectsWrap,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 0.25,
-        onUpdate: (self) => {
-            const nextIndex = Math.min(
-                workImages.length - 1,
-                Math.floor(self.progress * workImages.length)
-            );
 
-            setActiveWork(nextIndex);
-
-            if (workProgress) {
-                gsap.set(workProgress, { scaleX: self.progress });
-            }
-        }
-    });
-
-    gsap.from('.projects-stage', {
-        opacity: 0,
-        y: 60,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
+    if (isMobile()) {
+        // Mobile: show all projects stacked — each card + story visible
+        workImages.forEach(img => img.classList.add('active'));
+        workStories.forEach(story => story.classList.add('active'));
+        if (moreProjectsBtn) moreProjectsBtn.classList.add('visible');
+    } else {
+        // Desktop: scroll-driven storytelling
+        ScrollTrigger.create({
             trigger: projectsWrap,
-            start: 'top 75%'
-        }
-    });
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 0.25,
+            onUpdate: (self) => {
+                const nextIndex = Math.min(
+                    workImages.length - 1,
+                    Math.floor(self.progress * workImages.length)
+                );
+
+                setActiveWork(nextIndex);
+
+                if (workProgress) {
+                    gsap.set(workProgress, { scaleX: self.progress });
+                }
+            }
+        });
+
+        gsap.from('.projects-stage', {
+            opacity: 0,
+            y: 60,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: projectsWrap,
+                start: 'top 75%'
+            }
+        });
+    }
 }
 
 // Skills section — no entrance animation, cards are static
 
-// Parallax Section
+// Parallax Section — desktop only
 const p1 = document.querySelector('.parallax-img.p1');
 const p2 = document.querySelector('.parallax-img.p2');
 
-gsap.to(p1, {
-    y: () => -150 * p1.dataset.speed,
-    ease: "none",
-    scrollTrigger: {
-        trigger: '.parallax-section',
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true
-    }
-});
+if (!isMobile() && p1 && p2) {
+    gsap.to(p1, {
+        y: () => -150 * p1.dataset.speed,
+        ease: "none",
+        scrollTrigger: {
+            trigger: '.parallax-section',
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+        }
+    });
 
-gsap.to(p2, {
-    y: () => -150 * p2.dataset.speed,
-    ease: "none",
-    scrollTrigger: {
-        trigger: '.parallax-section',
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true
-    }
-});
+    gsap.to(p2, {
+        y: () => -150 * p2.dataset.speed,
+        ease: "none",
+        scrollTrigger: {
+            trigger: '.parallax-section',
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+        }
+    });
+}
 
 // Footer Reveal Effect
 gsap.from('.footer-content', {
@@ -396,10 +409,10 @@ gsap.from('.footer-content', {
     }
 });
 
-// Magnetic Button Effect
+// Magnetic Button Effect — desktop only
 const magneticBtn = document.querySelector('.magnetic-btn');
 
-if (magneticBtn) {
+if (magneticBtn && !isMobile()) {
     const magX = gsap.quickTo(magneticBtn, "x", {duration: 0.3, ease: 'power2.out'});
     const magY = gsap.quickTo(magneticBtn, "y", {duration: 0.3, ease: 'power2.out'});
     
