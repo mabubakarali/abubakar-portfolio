@@ -1036,14 +1036,14 @@ body {
 .work-section-title {
     position: absolute;
     left: 0;
-    top: -2.2rem;
+    top: -3.8rem;
     z-index: 8;
-    color: var(--text-color);
     font-family: var(--font-heading);
-    font-size: clamp(1rem, 1.7vw, 1.35rem);
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
     font-weight: 800;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: var(--accent);
 }
 
 .work-media {
@@ -1533,6 +1533,17 @@ body {
 /* Mobile projects list — hidden on desktop, shown on mobile */
 .mobile-projects-list { display: none; }
 
+.mobile-projects-heading {
+    font-family: var(--font-heading);
+    color: var(--accent);
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 2.5rem 1.5rem 1.5rem;
+    display: block;
+}
+
 /* ============================================================
    RESPONSIVE SYSTEM
    Desktop:  > 1024px  — full cinematic experience
@@ -1674,13 +1685,6 @@ body {
         width: 100%;
         padding-bottom: 1rem;
     }
-    .mobile-projects-list .work-section-title {
-        position: relative;
-        top: auto; left: auto;
-        display: block;
-        font-size: 0.8rem;
-        letter-spacing: 0.1em;
-    }
     .mobile-project-item {
         border-bottom: 1px solid rgba(255,255,255,0.08);
         overflow: hidden;
@@ -1764,17 +1768,28 @@ body {
         border-radius: 2px;
     }
 
-    /* ── More Projects button — compact on mobile ── */
+    /* ── More Projects button — compact, centered, not full width ── */
     .mobile-projects-list .more-projects-btn {
         font-size: 0.75rem;
-        padding: 0.6rem 1.2rem;
+        padding: 0.6rem 1.4rem;
         letter-spacing: 0.08em;
         margin: 1.5rem auto 2.5rem;
         border-radius: 50px;
+        display: inline-flex;
+        width: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        position: relative;
     }
 
     /* ── Hide scroll indicator mouse on mobile ── */
     .scroll-indicator { display: none; }
+
+    /* ── Hide custom cursor on mobile (touch devices don't need it) ── */
+    .cursor, .cursor-follower { display: none; }
+
+    /* ── Hide "Let's create something amazing" section on mobile ── */
+    .parallax-section { display: none; }
 
     /* ── Menu overlay — full screen, smaller text ── */
     .menu-overlay {
