@@ -1671,115 +1671,182 @@ body {
     .skill-category h3 { font-size: 0.9rem; }
     .skill-tags span { font-size: 0.72rem; padding: 0.28rem 0.65rem; }
 
-    /* ── Projects — hide desktop, show mobile list ── */
+    /* ── Projects — Mobile Scroll-driven Deck Reveal ── */
     .projects-wrapper {
-        min-height: auto;
+        min-height: 300vh; /* Restore pinning scroll depth on mobile */
         overflow: visible;
-        box-shadow: none;
+        box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.8);
     }
-    .projects-stage { display: none; }
-    .work-scroll-slides { display: none; }
+    
+    .projects-stage {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        height: 100vh;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        padding: 5rem 1.5rem 2rem;
+        gap: 1rem;
+    }
+
+    .work-scroll-slides {
+        display: none; /* Keep helper steps hidden, GSAP manages pinning on wrapper */
+    }
 
     .mobile-projects-list {
-        display: block;
-        width: 100%;
-        padding-bottom: 1rem;
+        display: none !important; /* Hide old simple list */
     }
-    .mobile-project-item {
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        overflow: hidden;
+
+    .work-index {
+        flex-direction: row;
+        justify-content: center;
+        align-self: center;
+        gap: 1.2rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.2rem;
     }
-    .mobile-project-card-bg {
-        position: relative;
-        width: 100%;
-        height: 160px;
-        background:
-            linear-gradient(135deg, rgba(217,20,56,0.1) 0%, transparent 55%),
-            repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(255,255,255,0.03) 29px, rgba(255,255,255,0.03) 30px),
-            repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(255,255,255,0.03) 29px, rgba(255,255,255,0.03) 30px);
+
+    .work-index-line {
+        display: none; /* Hide vertical line on mobile */
+    }
+
+    .work-display {
         display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        padding: 1rem 1.2rem;
-        overflow: hidden;
+        flex-direction: column;
+        align-items: stretch;
+        min-height: auto;
+        gap: 1.2rem;
     }
-    .mobile-project-card-bg .work-card-tag {
-        font-family: var(--font-heading);
-        font-size: 0.68rem;
-        font-weight: 800;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--accent);
+
+    .work-section-title {
         position: relative;
-        z-index: 2;
+        top: auto;
+        left: auto;
+        font-size: 1.2rem;
+        margin-bottom: 0.2rem;
+        text-align: center;
+        letter-spacing: 0.12em;
     }
-    .mobile-project-card-bg .work-card-num {
-        font-family: var(--font-heading);
-        font-size: 5rem;
-        font-weight: 800;
-        color: transparent;
-        -webkit-text-stroke: 1px rgba(255,255,255,0.08);
-        line-height: 1;
-        position: absolute;
+
+    .work-media {
+        width: 100%;
+        height: clamp(160px, 25vh, 220px);
+        align-self: center;
+        box-shadow: 0 0 25px rgba(217, 20, 56, 0.15), 0 15px 40px rgba(0,0,0,0.6);
+    }
+
+    .work-card-bg {
+        padding: 1.5rem 2rem;
+    }
+
+    .work-card-num {
+        font-size: 6rem;
         bottom: -0.5rem;
         right: 0.8rem;
-        pointer-events: none;
     }
-    .mobile-project-info {
-        padding: 1.2rem 1.5rem 1.8rem;
+
+    .work-card-lines {
+        gap: 0.6rem;
     }
-    .mobile-project-info .work-kicker {
-        display: block;
-        color: var(--accent);
-        font-family: var(--font-heading);
-        font-size: 0.7rem;
-        font-weight: 800;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
+
+    .work-copy {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 100%;
+        min-height: 160px; /* Room for story text */
+        margin-top: 0.5rem;
+    }
+
+    .work-story {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .work-kicker {
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
         margin-bottom: 0.4rem;
     }
-    .mobile-project-info h2 {
-        font-family: var(--font-heading);
-        font-size: clamp(1.6rem, 7vw, 2.4rem);
-        font-weight: 800;
-        line-height: 1.05;
-        color: var(--text-color);
-        text-transform: uppercase;
-        margin-bottom: 0.6rem;
+
+    .work-story h2 {
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+        max-width: 100%;
+        text-shadow: none;
     }
-    .mobile-project-info p {
-        font-size: 0.88rem;
-        color: rgba(255,255,255,0.6);
-        line-height: 1.6;
-        margin-bottom: 0.9rem;
+
+    .work-story p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-top: 0.5rem;
+        max-width: 100%;
+        text-shadow: none;
+        color: rgba(255,255,255,0.65);
     }
-    .mobile-project-tags {
+
+    .work-details {
+        margin-top: 0.8rem;
+        width: 100%;
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
+        justify-content: center;
     }
-    .mobile-project-tags span {
+
+    .work-services {
+        min-height: 50px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .work-service-list {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .work-service-list li {
         font-size: 0.72rem;
         font-weight: 600;
         padding: 0.25rem 0.65rem;
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.12);
         background: rgba(255,255,255,0.04);
-        color: rgba(255,255,255,0.65);
-        border-radius: 2px;
+        color: rgba(255,255,255,0.75);
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
 
-    /* ── More Projects button — compact, centered, not full width ── */
-    .mobile-projects-list .more-projects-btn {
+    .work-progress {
+        left: 1.5rem;
+        right: 1.5rem;
+        bottom: 4.8rem;
+    }
+
+    .projects-stage .more-projects-btn {
+        bottom: 1.2rem;
         font-size: 0.75rem;
         padding: 0.6rem 1.4rem;
-        letter-spacing: 0.08em;
-        margin: 1.5rem auto 2.5rem;
-        border-radius: 50px;
-        display: inline-flex;
-        width: auto;
+        position: absolute;
         left: 50%;
-        transform: translateX(-50%);
-        position: relative;
+        transform: translateX(-50%) translateY(10px);
+    }
+    .projects-stage .more-projects-btn.visible {
+        transform: translateX(-50%) translateY(0);
     }
 
     /* ── Hide scroll indicator mouse on mobile ── */

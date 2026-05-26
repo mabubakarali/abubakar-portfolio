@@ -320,51 +320,43 @@ const setActiveWork = (index) => {
     });
 
     // Show "More Projects" button only on the last project
-    if (moreProjectsBtn && !isMobile()) {
+    if (moreProjectsBtn) {
         const isLast = index === workImages.length - 1;
         moreProjectsBtn.classList.toggle('visible', isLast);
     }
 };
 
 if (projectsWrap && workImages.length) {
+    // Scroll-driven storytelling for both desktop and mobile
+    ScrollTrigger.create({
+        trigger: projectsWrap,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.25,
+        onUpdate: (self) => {
+            const nextIndex = Math.min(
+                workImages.length - 1,
+                Math.floor(self.progress * workImages.length)
+            );
 
-    if (isMobile()) {
-        // Mobile: show all projects stacked — each card + story visible
-        workImages.forEach(img => img.classList.add('active'));
-        workStories.forEach(story => story.classList.add('active'));
-        if (moreProjectsBtn) moreProjectsBtn.classList.add('visible');
-    } else {
-        // Desktop: scroll-driven storytelling
-        ScrollTrigger.create({
+            setActiveWork(nextIndex);
+
+            if (workProgress) {
+                gsap.set(workProgress, { scaleX: self.progress });
+            }
+        }
+    });
+
+    gsap.from('.projects-stage', {
+        opacity: 0,
+        y: 60,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
             trigger: projectsWrap,
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: 0.25,
-            onUpdate: (self) => {
-                const nextIndex = Math.min(
-                    workImages.length - 1,
-                    Math.floor(self.progress * workImages.length)
-                );
-
-                setActiveWork(nextIndex);
-
-                if (workProgress) {
-                    gsap.set(workProgress, { scaleX: self.progress });
-                }
-            }
-        });
-
-        gsap.from('.projects-stage', {
-            opacity: 0,
-            y: 60,
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: projectsWrap,
-                start: 'top 75%'
-            }
-        });
-    }
+            start: 'top 75%'
+        }
+    });
 }
 
 // Skills section — no entrance animation, cards are static
